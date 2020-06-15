@@ -97,6 +97,10 @@
                         $('#myModal').modal();
                         $('.modal-body').text(backData.msg);
                         if (backData.code == 200) {
+                            // 保存token信息
+                            localStorage.setItem('token', backData.token);
+
+                            // 使用bootstrap触发事件
                             $('#myModal').on('hidden.bs.modal', function(e) {
                                 // 6. 登录成功提示并跳转到首页
                                 window.location.href = './index.html'

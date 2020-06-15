@@ -76,9 +76,9 @@
             $.ajax({
                 url: 'http://localhost:8080/api/v1/admin/user/info',
                 type: 'get',
-                headers: {
-                    Authorization: localStorage.getItem('token')
-                },
+                // headers: {
+                //     Authorization: localStorage.getItem('token')
+                // },
                 success: function(backData) {
                     console.log(backData);
                     if (backData.code == 200) {
@@ -88,6 +88,17 @@
                     }
                 }
             });
+
+            // 退出
+            // 给退出按钮设置点击事件
+            $('.logout').on('click', function() {
+                if (confirm('你确定要退出吗？')) {
+                    localStorage.removeItem('token')
+                        // 返回到登录页面
+                    window.location.href = './login.html';
+                }
+            })
+
         })
     </script>
 </body>
